@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ControlFLowExercies {
+public class ControlFlowExercises {
     public static void main(String[] args) {
         /*While
 
@@ -20,7 +20,8 @@ Your output should look like this:
 
 Create a do-while loop that will count by 2's starting with 0 and ending at 100. Follow each number with a new line.
 Alter your loop to count backwards by 5's from 100 to -10.
-Create a do-while loop that starts at 2, and displays the number squared on each line while the number is less than 1,000,000. Output should equal:
+Create a do-while loop that starts at 2, and displays the number squared on each line while the number is less than
+1,000,000. Output should equal:
 
  2
  4
@@ -71,19 +72,28 @@ refactor the previous two exercises to use a for loop instead*/
             }
         }
 
-//        Scanner s = new Scanner(System.in);
-//
-//        System.out.print("What number would you like to go up to? ");
-//        int num = s.nextInt();
+        Scanner s = new Scanner(System.in);
 
-        System.out.println("\nHere is your table!\n");
-        System.out.println("number | squared | cubed");
-        System.out.println("______ | _______ | _____");
-        for (int iN = 1; iN <= 5; iN++) {
-            int squared = (int)Math.pow(iN, 2);
-            int cubed = (int)Math.pow(iN, 3);
-            System.out.printf("%-6d | %-7d | %-5d%n", iN, squared, cubed);
-        }
+        String userResponse;
+
+        do {
+
+            System.out.print("What number would you like to go up to? ");
+            int num = s.nextInt();
+
+            System.out.println("\nHere is your table!\n");
+            System.out.println("number | squared | cubed");
+            System.out.println("______ | _______ | _____");
+            for (int iN = 1; iN <= num; iN++) {
+                int squared = (int) Math.pow(iN, 2);
+                int cubed = (int) Math.pow(iN, 3);
+                System.out.printf("%-6d | %-7d | %-5d%n", iN, squared, cubed);
+            }
+
+            System.out.printf("%n%nWould you like to continue (y/n): ");
+            userResponse = s.next();
+
+        } while (userResponse.equals("y"));
 
         /*Convert given number grades into letter grades.
 
@@ -102,8 +112,42 @@ refactor the previous two exercises to use a for loop instead*/
         Bonus
 
         Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).*/
-        Scanner s = new Scanner(System.in);
-        System.out.print("Enter a number grade: ");
-        
+//        Scanner s = new Scanner(System.in);
+        do {
+            System.out.print("Enter a number grade: ");
+            int grade = s.nextInt();
+            System.out.println();
+            if (grade >= 88 && grade <= 100) {
+                if (grade >= 99) {
+                    System.out.println("A+");
+                } else {
+                    System.out.println('A');
+                }
+            } else if (grade >= 80 && grade <= 87) {
+                if (grade >= 86) {
+                    System.out.println("B+");
+                } else {
+                    System.out.println('B');
+                }
+            } else if (grade >= 67 && grade <= 79) {
+                if (grade >= 78) {
+                    System.out.println("C+");
+                } else {
+                    System.out.println('C');
+                }
+            } else if (grade >= 60 && grade <= 66) {
+                if (grade >= 65) {
+                    System.out.println("D+");
+                } else {
+                    System.out.println('D');
+                }
+            } else {
+                System.out.println('F');
+            }
+
+            System.out.printf("%n%nWould you like to continue (y/n): ");
+            userResponse = s.next();
+
+        } while (userResponse.equals("y"));
     }
 }
