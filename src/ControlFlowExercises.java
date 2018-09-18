@@ -61,7 +61,7 @@ refactor the previous two exercises to use a for loop instead*/
         }
 
         for (int f = 1; f <= 100; f++) {
-            if (f % 3 == 0 && f % 5 == 0) {
+            if (f % 3 == 0 & f % 5 == 0) {
                 System.out.println("fizzbuzz");
             } else if (f % 3 == 0) {
                 System.out.println("fizz");
@@ -117,25 +117,25 @@ refactor the previous two exercises to use a for loop instead*/
             System.out.print("Enter a number grade: ");
             int grade = s.nextInt();
             System.out.println();
-            if (grade >= 88 && grade <= 100) {
+            if (grade >= 88 & grade <= 100) {
                 if (grade >= 99) {
                     System.out.println("A+");
                 } else {
                     System.out.println('A');
                 }
-            } else if (grade >= 80 && grade <= 87) {
+            } else if (grade >= 80 & grade <= 87) {
                 if (grade >= 86) {
                     System.out.println("B+");
                 } else {
                     System.out.println('B');
                 }
-            } else if (grade >= 67 && grade <= 79) {
+            } else if (grade >= 67 & grade <= 79) {
                 if (grade >= 78) {
                     System.out.println("C+");
                 } else {
                     System.out.println('C');
                 }
-            } else if (grade >= 60 && grade <= 66) {
+            } else if (grade >= 60 & grade <= 66) {
                 if (grade >= 65) {
                     System.out.println("D+");
                 } else {
