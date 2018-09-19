@@ -25,6 +25,10 @@ public class HighLow {
         do {
             guess = getUserGuess(1, max);
             guesses++;
+            if (guesses >= 10) {
+                System.out.printf("You ran out of guesses! The number was %d.%n", rand);
+                return;
+            }
             if (guess < rand) {
                 System.out.printf("HIGHER! You have %d guesses left.%n", 10-guesses);
             } else if (guess > rand){
