@@ -21,22 +21,28 @@ public class MoviesApplication {
                     stop = true;
                     break;
                 case 1:
-                    System.out.println(String.join("\n", MoviesArray.moviesToString())+"\n");
+                    System.out.println(String.join("\n",
+                            MoviesArray.moviesToString()) + "\n");
                     break;
                 case 2:
-                    System.out.println(String.join("\n", MoviesArray.moviesToString("animated"))+"\n");
+                    System.out.println(String.join("\n",
+                            MoviesArray.moviesToString("animated")) + "\n");
                     break;
                 case 3:
-                    System.out.println(String.join("\n", MoviesArray.moviesToString("drama"))+"\n");
+                    System.out.println(String.join("\n",
+                            MoviesArray.moviesToString("drama")) + "\n");
                     break;
                 case 4:
-                    System.out.println(String.join("\n", MoviesArray.moviesToString("horror"))+"\n");
+                    System.out.println(String.join("\n",
+                            MoviesArray.moviesToString("horror")) + "\n");
                     break;
                 case 5:
-                    System.out.println(String.join("\n", MoviesArray.moviesToString("scifi"))+"\n");
+                    System.out.println(String.join("\n",
+                            MoviesArray.moviesToString("scifi")) + "\n");
                     break;
                 case 6:
-                    MoviesArray.addMovie(input.getString("\nMovie Name: "),input.getString("\nMovie Category: 6"));
+                    MoviesArray.addMovie(input.getString("\nMovie Name: "),
+                            input.getString("\nMovie Category: 6"));
                     break;
                 default:
                     break;

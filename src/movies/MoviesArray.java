@@ -1,6 +1,5 @@
 package movies;
 
-import javax.swing.plaf.multi.MultiViewportUI;
 import java.util.Arrays;
 
 public class MoviesArray {
@@ -111,7 +110,8 @@ public class MoviesArray {
         Movie[] movies = findAll();
         String[] movieStrings = new String[movies.length];
         for (int i = 0; i < movies.length; i++) {
-            movieStrings[i] = movies[i].movieName() + " -- " + movies[i].movieCategory();
+            movieStrings[i] =
+                    movies[i].movieName() + " -- " + movies[i].movieCategory();
         }
         return movieStrings;
     }
@@ -136,7 +136,7 @@ public class MoviesArray {
     }
 
     public static void addMovie(String name, String category) {
-        Movie[] newMovies = Arrays.copyOf(movies, movies.length+1);
+        Movie[] newMovies = Arrays.copyOf(movies, movies.length + 1);
         newMovies[movies.length] = new Movie(name, category);
         movies = newMovies;
     }

@@ -32,7 +32,7 @@ public class Input {
         given prompt to the user before parsing the input.*/
     private Scanner scanner;
 
-    public Input(){
+    public Input() {
         this.scanner = new Scanner(System.in);
     }
 
@@ -46,7 +46,8 @@ public class Input {
     }
 
     public boolean yesNo() {
-        return this.scanner.nextLine().matches(".*((\\W|^)[Yy][eE][sS](\\W|$)).*|.*((\\W|^)[Yy](\\W|$)).*|^[yY][eE][sS]$|^[yY]$");
+        return this.scanner.nextLine().matches(".*((\\W|^)[Yy][eE][sS](\\W|$)" +
+                ").*|.*((\\W|^)[Yy](\\W|$)).*|^[yY][eE][sS]$|^[yY]$");
     }
 
     public boolean yesNo(String prompt) {

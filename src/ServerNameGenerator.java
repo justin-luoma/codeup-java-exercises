@@ -1,6 +1,7 @@
 public class ServerNameGenerator {
 
-    private static String[] adjectives = {"abandoned", "able", "absolute", "adorable",
+    private static String[] adjectives = {"abandoned", "able", "absolute",
+            "adorable",
             "adventurous", "academic", "acceptable", "acclaimed",
             "accomplished", "accurate", "aching", "acidic", "acrobatic",
             "active", "actual", "adept", "admirable", "admired", "adolescent"
@@ -989,11 +990,24 @@ public class ServerNameGenerator {
             , "zirconium", "zit", "zombie", "zoo", "zucchini", "zygote"};
 
     private static String getRandomString(String[] strings) {
-        int rand = (int)(Math.random() * strings.length);
+        int rand = (int) (Math.random() * strings.length);
         return strings[rand];
     }
 
     public static void main(String[] args) {
-        System.out.printf("%s-%s", getRandomString(adjectives), getRandomString(nouns));
+        int times = 1;
+        try {
+            times = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e)
+        {
+            System.out.println("integers are the only valid arguments");
+            return;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            //
+        }
+        for (int i = 1; i <= times; i++) {
+            System.out.printf("%s-%s%n", getRandomString(adjectives),
+                    getRandomString(nouns));
+        }
     }
 }
