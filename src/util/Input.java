@@ -57,9 +57,11 @@ public class Input {
     public int getInt() {
         while (!this.scanner.hasNextInt()) {
             System.out.println("invalid input");
-            this.scanner.next();
+            this.scanner.nextLine();
         }
-        return this.scanner.nextInt();
+        int rt = this.scanner.nextInt();
+        this.scanner.nextLine();
+        return rt;
     }
 
     public int getInt(String prompt) {
@@ -86,7 +88,9 @@ public class Input {
             System.out.println("invalid input");
             this.scanner.next();
         }
-        return this.scanner.nextDouble();
+        double rt = this.scanner.nextDouble();
+        this.scanner.nextLine();
+        return rt;
     }
 
     public double getDouble(String prompt) {
@@ -131,7 +135,7 @@ class TextInput {
 //        System.out.print("enter double 1.1 - 10.2: ");
 //        double dd = input.getDouble(1.1, 10.2);
 //        System.out.println(dd);
-
+//
 //        System.out.print("yes or no: ");
 //        System.out.println(input.yesNo());
 //        System.out.println(input.yesNo("Would you like to continue? "));
