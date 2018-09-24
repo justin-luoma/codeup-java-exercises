@@ -11,6 +11,14 @@ public class Student {
         this.grades = new ArrayList<>();
     }
 
+    public Student(String name, int... grades) {
+        this.name = name;
+        this.grades = new ArrayList<>();
+        for(int grade: grades) {
+            this.addGrade(grade);
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -24,6 +32,12 @@ public class Student {
                 .mapToInt(grade -> grade)
                 .sum();
         return (double) sum / grades.size();
+    }
+
+    public int[] getGrades() {
+        return this.grades.stream()
+                .mapToInt(grade -> grade)
+                .toArray();
     }
 
     public static void main(String[] args) {
