@@ -56,20 +56,20 @@ public class ContactsApplication {
         }
         String header = String.format(
                 "| %-" + (contacts.longestName + 1) +
-                        "s| %-" + (contacts.longestNumber + 1) + "s|", "Name"
+                        "s| %-" + (contacts.longestNumber + 3) + "s|", "Name"
                 , "Number");
         System.out.printf("%n%s%n", header);
         System.out.print("|");
         System.out.print(new String(new char[contacts.longestName + 2])
                 .replace("\0", "-"));
         System.out.print("|");
-        System.out.print(new String(new char[contacts.longestNumber + 2])
+        System.out.print(new String(new char[contacts.longestNumber + 4])
                 .replace("\0", "-"));
         System.out.print("|\n");
         for (Contact contact : contacts.getContacts()) {
             System.out.printf("| %-" + (contacts.longestName + 1) + "s| %-"
-                            + (contacts.longestNumber + 1) + "d|%n",
-                    contact.name(), contact.number());
+                            + (contacts.longestNumber + 3) + "s|%n",
+                    contact.name(), formatNumber(contact.number()));
         }
         System.out.println();
     }
@@ -83,7 +83,26 @@ public class ContactsApplication {
             number = input.getLong("Number: ");
         }
         System.out.println();
-        contacts.addContact(new Contact(name, number));
+        try {
+            ArrayList<Contact> match =  contacts.search(name);
+            switch (match.size()) {
+                case 1:
+                    if (input.yesNo("There's already a contact named " + name + ". Do" +
+                            " you want to overwrite it? (Yes/No): ")) {
+                        contacts.removeContact(match.get(0));
+                        contacts.addContact(new Contact(name, number));
+                    }
+                    System.out.println();
+                    break;
+                default:
+                    System.out.println("There were multiple matches to the contact you're trying to add.");
+                    System.out.println();
+                    break;
+            }
+
+        } catch (Exception e) {
+            contacts.addContact(new Contact(name, number));
+        }
     }
 
     private static void search() {
@@ -128,11 +147,22 @@ public class ContactsApplication {
         System.out.println();
         ArrayList<Contact> contactL = contacts.getContacts();
         for (int i = 0; i < contactL.size(); i++) {
-            System.out.printf("%d: %s%n", i+1, contactL.get(i).name());
+            System.out.printf("%d: %s%n", i + 1, contactL.get(i).name());
         }
         int contactN = input.getInt(1, contactL.size(), "Which contact would " +
                 "you like to delete? ");
-        contacts.removeContact(contactL.get(contactN-1));
+        contacts.removeContact(contactL.get(contactN - 1));
         System.out.println();
+    }
+
+    private static String formatNumber(long number) {
+        String numStr = String.valueOf(number);
+        switch (numStr.length()) {
+            case 7:
+                return numStr.substring(0, 3) + "-" + numStr.substring(3, 7);
+            case 10:
+                return numStr.substring(0, 3) + "-" + numStr.substring(3, 6) + "-" + numStr.substring(6, 10);
+        }
+        return numStr;
     }
 }
