@@ -84,6 +84,21 @@ public class Input {
         return this.getInt(min, max);
     }
 
+    public long getLong() {
+        while (!this.scanner.hasNextLong()) {
+            System.out.println("invalid input");
+            this.scanner.nextLine();
+        }
+        long rt = this.scanner.nextLong();
+        this.scanner.nextLine();
+        return rt;
+    }
+
+    public long getLong(String prompt) {
+        System.out.print(prompt);
+        return getLong();
+    }
+
     public double getDouble() {
         while (!this.scanner.hasNextDouble()) {
             System.out.println("invalid input");
@@ -112,11 +127,41 @@ public class Input {
         System.out.print(prompt);
         return this.getDouble(min, max);
     }
+
+    public int getBinary() {
+        try {
+            return  Integer.valueOf(getString(), 2);
+        } catch (NumberFormatException e) {
+            System.out.println("invalid input");
+        }
+        return getBinary();
+    }
+
+    public int getBinary(String prompt) {
+        System.out.print(prompt);
+        return getBinary();
+    }
+
+    public int getHex() {
+        try {
+            return Integer.valueOf(getString(), 16);
+        } catch (NumberFormatException e) {
+            System.out.println("invalid input");
+        }
+        return getHex();
+    }
+
+    public int getHex(String prompt) {
+        System.out.print(prompt);
+        return getHex();
+    }
 }
 
 class TextInput {
     public static void main(String[] args) {
         Input input = new Input();
+        int i = input.getBinary();
+        System.out.println(i);
 //        System.out.print("enter string: ");
 //        String s = input.getString();
 //        System.out.println(s);
